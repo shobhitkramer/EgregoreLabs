@@ -1,6 +1,6 @@
 #Storing the names of different PDFs in character vector "file_names"
 directory = "C:/Users/HP/Documents/R Directories/EgregoreLabs/Docs/"
-file_names = list.files(path = file_path)
+file_names = list.files(path = directory)
 number_of_files = length(file_names)
 index=-1
 
@@ -21,7 +21,7 @@ for(i in 1:number_of_files)
    TextFile = pdf_text(FilePath) %>% readr::read_lines()
    
    #No of pages
-   pages=length(pdf_text(paste(file_path,file_names[i],sep = "")))
+   pages=length(pdf_text(FilePath))
    
    #Company Name
    cleanName1= TextFile[1] %>% str_replace_all( "[[:punct:]]", "") %>% str_squish() %>% strsplit(split = " ") %>% unlist()
